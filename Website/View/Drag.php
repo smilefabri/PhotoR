@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+if(isset($_SESSION["user_id"]) && isset($_SESSION["nickname"] ) ){
+
+}else{
+    header("location: /PhotoR/Website/View/login-regis.html");
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +23,7 @@
     <title>PhotoR</title>
 
 </head>
-<body>
+<body >
     <!--load image from-->
  
 
@@ -31,17 +43,17 @@
             </div>
         </div>
         <div class="menu"  >
-            <h2>{Name} <br> <span>Bevenuto!</span></h2>
+            <h2><?php   echo $_SESSION["nickname"]; ?> <br> <span>Bevenuto!</span></h2>
             <ul>
                 <li>
                     <i class="fa fa-user" aria-hidden="true"><a href="#">Profile</a></i>
                     
                 </li>
                 <li>
-                    <i class="fas fa-sign-out-alt" aria-hidden="true"><a href="#">Settings</a></i> 
+                    <i class="fa fa-cog" aria-hidden="true"><a href="#">Settings</a></i> 
                 </li>
                 <li>
-                    <i class="fas fa-sign-out-alt" aria-hidden="true"><a href="#">Logout</a></i> 
+                    <i class="fas fa-sign-out-alt" aria-hidden="true"><a href="/PhotoR/Website/php/logout.php">Logout</a></i> 
                 </li>
 
             </ul>
@@ -55,7 +67,7 @@
 
     </nav>
       
-    <div id='dropzone' class="container drag-container">
+    <div id='dropzone' draggable="true" class="container drag-container">
         <div class="container__content">
         </div>
         <div class="message">
@@ -65,7 +77,7 @@
             <button class="button-choosefile"><span class="spectrum-Button-label">
                 Carica file
             </span>
-            <input  type="file" id="file-upload" accept=".jpg,.jpeg,.png,.svg" style="display: none;">
+            <input  type="file" id="file-upload" accept=".jpg,.jpeg,.png" style="display: none;">
         </button>
         </div>
       

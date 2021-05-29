@@ -12,17 +12,17 @@
   <div class ="opacity" ></div>
   <div class="cont">
     
-    <form action="../Website/php/Login.php" class="form sign-in">
+    <form action="/PhotoR/Website/php/Login.php" onsubmit="check_login()" method="post" class="form sign-in">
       <h2>Sign In</h2>
       <label>
         <span>Email Address</span>
-        <input type="email" name="email">
+        <input type="email" name="email" required>
       </label>
       <label>
         <span>Password</span>
-        <input type="password" name="password">
+        <input type="password" name="password" required>
       </label>
-      <button class="submit" type="submit">Sign In</button>
+      <button class="submit"  type="submit">Sign In</button>
     </form>
 
     <div class="sub-cont">
@@ -41,25 +41,34 @@
         </div>
       </div>
 
-      <form class="form sign-up">
+      <form class="form sign-up" action="/PhotoR/Website/php/register.php" onsubmit="check_register()" method="post"  style="overflow: auto;">
         <h2>Sign Up</h2>
         <label>
           <span>Name</span>
-          <input type="text">
+          <input type="text" name="name" required>
         </label>
         <label>
-          <span>Email</span>
-          <input type="email">
+          <span>LastName</span>
+          <input type="text" name="lastname" required>
         </label>
+        <label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" required>
+          </label>
+          <label>
+          <span>Birthday</span>
+          <input type="date" name="birthday" required>
+        </label>
+        <label>
+          <span>Nickname</span>
+          <input type="text" name="nickname" required>
+        </label>  
         <label>
           <span>Password</span>
-          <input type="password">
+          <input type="password" name="password" required>
         </label>
-        <label>
-          <span>Confirm Password</span>
-          <input type="password">
-        </label>
-        <button type="submit" class="submit">Sign Up Now</button>
+        <button type="submit"  class="submit">Sign Up Now</button>
       </form>
     </div>
   </div>

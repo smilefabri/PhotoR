@@ -256,6 +256,8 @@ button{
           transform:translate3d(640px, 0, 0);
 }
 
+
+
 .img-btn{
   overflow: hidden;
   z-index: 2;
@@ -315,6 +317,7 @@ button{
 }
 
 .sign-up{
+  
   -webkit-transform:translate3d(-900px, 0, 0);
           transform:translate3d(-900px, 0, 0);
 }
