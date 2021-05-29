@@ -1,3 +1,22 @@
+<?php
+
+
+session_start();
+if(isset($_SESSION["user_id"]) && isset($_SESSION["nickname"] ) ){
+
+}else{
+    header("location: /PhotoR/Website/View/login-regis.html");
+    exit();
+}
+
+
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,14 +48,14 @@
             <h2>{Name} <br> <span>Bevenuto!</span></h2>
             <ul>
                 <li>
-                    <i class="fa fa-user" aria-hidden="true"><a href="#">Profile</a></i>
+                    <i class="fa fa-user" aria-hidden="true"><a href="/PhotoR/Website/view/profile.php">Profile</a></i>
                     
                 </li>
                 <li>
                     <i class="fa fa-cog" aria-hidden="true"><a href="#">Settings</a></i> 
                 </li>
                 <li>
-                    <i class="fas fa-sign-out-alt" aria-hidden="true"><a href="#">LogOut</a></i> 
+                    <i class="fas fa-sign-out-alt" aria-hidden="true"><a href="/PhotoR/Website/php/logout.php">LogOut</a></i> 
                 </li>
 
             </ul>
@@ -45,7 +64,7 @@
 
         
         
-        <script type="text/javascript" src="../js/drag_script.js"></script>
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.min.js" integrity="sha512-JjFeUD2H//RHt+DjVf1BTuy1X5ZPtMl0svQ3RopX641DWoSilJ89LsFGq4Sw/6BSBfULqUW/CfnVopV5CfvRXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </nav>
     <div class="work_area">
@@ -121,5 +140,7 @@
             </div>
         </div>
     </div>
+    <script src="../js/drag_script.js"></script>
+    <script src="../js/script_editor.js"></script>
 </body>
 </html>

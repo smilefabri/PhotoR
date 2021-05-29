@@ -2,7 +2,6 @@
 
     header("Content-Type: application/json");
 
-    
 
 
     require_once('Class_utenti.php');
@@ -10,10 +9,16 @@
     require_once('Manager_file.php');
     session_start();
 
+    $hostname_db = "localhost";
+    $user_db = "root";
+    $password_db = "";  
+    $dbname = "photor";
+
     if(isset($_SESSION["user_id"]) && isset($_SESSION["nickname"] ) ){
         $user_id  = $_SESSION["user_id"];
-        $database = 
+        $database = new Manager_DB($hostname_db,$user_db,$password_db,$dbname); 
         $uploaded = array();
+        
     }else{
         header("location: /PhotoR/Website/View/login-regis.html");
         exit();
@@ -36,19 +41,23 @@
                 $extension = pathinfo($_FILES['file']['name'][0], PATHINFO_EXTENSION);
                 $rename = uniqid("upload_").".".$extension;
                 $renamefile = rename($path.$name,$path.$rename);
+                $_SESSION["path_File"] = $path.$rename;
                 $uploaded[] = array(
-                    'rename'=> $rename,
-                    'path_rename'=> $path.$rename
+                    'response'=> "200",
+                    
                 );
             }else{
-                echo $path.$name;
-                exit();
+                $uploaded[] = array(
+                    'response'=> "505",
+                );
+                
             }
             
         
     }else{
-        echo "file non arrivato!";
-        exit();
+        $uploaded[] = array(
+            'response'=> "404",         
+        );
     }
 
     echo json_encode($uploaded);

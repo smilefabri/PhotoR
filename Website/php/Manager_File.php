@@ -1,6 +1,6 @@
 <?php
 
-    class Utenti{
+    class File{
 
         //file(id,UserID,NameFiles,SizeFiles,PathFiles)
         private $UserID;

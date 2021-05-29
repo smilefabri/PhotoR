@@ -46,7 +46,7 @@ if(isset($_SESSION["user_id"]) && isset($_SESSION["nickname"] ) ){
             <h2><?php   echo $_SESSION["nickname"]; ?> <br> <span>Bevenuto!</span></h2>
             <ul>
                 <li>
-                    <i class="fa fa-user" aria-hidden="true"><a href="#">Profile</a></i>
+                    <i class="fa fa-user" aria-hidden="true"><a href="/PhotoR/Website/view/profile.php">Profile</a></i>
                     
                 </li>
                 <li>
@@ -67,18 +67,20 @@ if(isset($_SESSION["user_id"]) && isset($_SESSION["nickname"] ) ){
 
     </nav>
       
-    <div id='dropzone' draggable="true" class="container drag-container">
+    <div  id='dropzone' draggable="true" class="container drag-container">
         <div class="container__content">
         </div>
         <div class="message">
             <h3>Selezionate un'immagine da regolare</h3> <br>
-            <h5>Trascinate qui un file o selezionate uno dal dispositivo.</h5>
-
-            <button class="button-choosefile"><span class="spectrum-Button-label">
+            <h5>Trascinate qui un file o selezionate uno dal dispositivo. <br> (solo .jpg, .jpeg e .png )</h5>
+            
+            <button id="btn" class="button-choosefile" onclick="Send_File()">
+            <span  class="spectrum-Button-label">
                 Carica file
             </span>
-            <input  type="file" id="file-upload" accept=".jpg,.jpeg,.png" style="display: none;">
-        </button>
+                <input onchange="Read_File(this)"  type="file" id="file-upload"  accept="image/*" style="display: none;">
+            </button>
+
         </div>
       
     </div>
