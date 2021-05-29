@@ -65,7 +65,7 @@ if(isset($_SESSION["user_id"]) && isset($_SESSION["nickname"] ) ){
         
         
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/camanjs/4.1.2/caman.full.min.js" integrity="sha512-JjFeUD2H//RHt+DjVf1BTuy1X5ZPtMl0svQ3RopX641DWoSilJ89LsFGq4Sw/6BSBfULqUW/CfnVopV5CfvRXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/gh/silvia-odwyer/pixels.js/dist/Pixels.js"></script>
     </nav>
     <div class="work_area">
         <div class="menu_lateral">
@@ -125,7 +125,7 @@ if(isset($_SESSION["user_id"]) && isset($_SESSION["nickname"] ) ){
 
 
         <div class="tool_layer_container">
-            <canvas id="canvas_image">
+            <canvas id="canvas_image"  width="300" height="300">
             
             </canvas>
             <div class="tool-canvas">

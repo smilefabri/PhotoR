@@ -26,8 +26,20 @@ let upload = function(files){
 			
 			formData.append('file[]', files[i]);
 			xhr.open('post', '/PhotoR/Website/php/upload.php');
+			//salvare in locale anche il file per avere subito accesso al file
+			const reader = new FileReader();
+			reader.readAsDataURL(files[i]);
+
+			reader.addEventListener("load",()=>{
+				sessionStorage.setItem("recent-upload",reader.result);
+				console.log(reader.result);
+			});
+
 			console.log("send data: ", formData)
 			xhr.send(formData);
+
+			
+
 			xhr.onload = function(){
 				var data = this.responseText;
 				data =JSON.parse(data)
@@ -37,6 +49,8 @@ let upload = function(files){
 				}
 
 			}
+
+			
 		
 			
 		}else{
