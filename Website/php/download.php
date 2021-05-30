@@ -2,7 +2,7 @@
     
     header("Content-Type: application/json");
 
-    $max_elaborazioni = 2;
+    $max_elaborazioni = 20;
 
     require_once('Class_utenti.php');
     require_once('Class_BD.php');
@@ -49,7 +49,7 @@
     
                     $uploaded[] = array(
                         'response'=> "600",
-                        'dessc'=> "hai superato il limite giornaliero di elaborazioni!",
+                        'descr'=> "hai superato il limite giornaliero di elaborazioni!",
                         'max'=>$database->N_elab($temp_id),
                     );
 
@@ -64,8 +64,10 @@
                     
                     $uploaded[] = array(
                         'response'=> "200",
-                        'tipo'=> $type_filtro,
+                        'name'=> $rename,
+                        'header'=> $path.$rename ,
                         'max'=> $database->N_elab($temp_id),
+                        'descr'=> "Download avviato!",
                     );
 
 
@@ -84,6 +86,7 @@
                     //se il filtro non funziona vuol'dire che hanno modificato il valore 
                     'response'=> "400 filtro sbagliato",
                     'tipo'=> $type_filtro,
+                    'descr'=> "filtro non esistente",
                     
                 );
 
@@ -94,6 +97,7 @@
 
             $uploaded[] = array(
                 'response'=> "505",
+                'descr'=> "internal error",
             );
             
         }
@@ -102,7 +106,8 @@
 }else{
 
     $uploaded[] = array(
-        'response'=> "404",         
+        'response'=> "404", 
+        'descr'=> "file vuoto!",        
     );
 }
 

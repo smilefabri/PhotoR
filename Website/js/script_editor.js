@@ -211,10 +211,29 @@ window.addEventListener('load',function(){
                         var data = this.responseText;
                         data =JSON.parse(data)
                         console.log("risposta dal server php:",data)
+                        if (data[0]["response"] == "200") {
+                            window.location.replace(data[0]['header'].replace("#","%23"));
+                            alert(data[0]['descr'])
+                            
+                            
+                        }
 
                         if(data[0]["response"] == "600"){
                             alert(data[0]['descr'])
                         }
+                        if (data[0]["response"] == "400") {
+                            alert(data[0]['descr'])
+                            
+                        }
+                        if (data[0]["response"] == "505") {
+                            alert(data[0]['descr'])
+                            
+                        }
+                        if (data[0]["response"] == "404") {
+                            alert(data[0]['descr'])
+                            
+                        }
+                        
         
                     }
         
