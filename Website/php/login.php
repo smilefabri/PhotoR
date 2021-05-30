@@ -25,7 +25,7 @@
                 session_start();
                 $_SESSION["user_id"]  = $database->get_id($user_email); 
                 $_SESSION["nickname"] = $database->get_nickname($user_email);
-
+                $_SESSION["startConn"] =date('Y-m-d H:i:s');
                 header("location: /PhotoR/Website/View/drag.php");
                 exit;
 

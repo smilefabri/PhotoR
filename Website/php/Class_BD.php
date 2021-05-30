@@ -101,6 +101,79 @@ class Manager_DB{
         return $temp_nick;
     }
 
+    function set_ReConn($id,$Inziodata,$Finedata){
+        
+        $query = "INSERT INTO connessioni(UserID,startConn,endConn) VALUES ('$id','$Inziodata','$Finedata')";
+        $query = $this->conn->prepare($query);
+        $query->execute();
+    }
+
+    function Add_file($UserID,$nameFiles,$SizeFiles,$pathfiles){
+        $UserID = intval($UserID);
+        $query = "INSERT INTO tabelfiles(utenteID,nomeFi,dimFi,perFi) VALUES ('$UserID','$nameFiles','$SizeFiles','$pathfiles' )";
+        $query = $this->conn->prepare($query);
+        $query->execute();
+    }
+
+    function Add_elab($IDfiles,$IDfiltro){
+        $query = "INSERT INTO elaborazioni(FileID,FiltroID,Data) VALUES ('$IDfiles','$IDfiltro',NOW())";
+
+        $query = $this->conn->prepare($query);
+        $query->execute();
+    }
+
+    function filtroID_by_name($name){
+        $query = "SELECT ID FROM filtri WHERE type = '$name'";
+        $query = $this->conn->prepare($query);
+        $query->execute();
+        if($query->rowCount() != 0 ){
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+            $temp_id = $result["ID"];
+            return $temp_id;
+        }else{
+            return null;
+        }
+
+        
+    }
+
+    function N_elab($id){
+        $sql = "SELECT COUNT(*) as ID\n"
+
+    . "FROM elaborazioni EL,tabelfiles TF, filtri F , utenti U\n"
+
+    . "WHERE EL.FileID = TF.ID AND F.ID = EL.FiltroID AND U.ID = TF.UtenteID AND UtenteID ='$id' AND DAY(NOW()) = DAY(EL.data) \n"
+
+    . "AND YEAR(NOW()) = YEAR(EL.data) AND MONTH(NOW()) = MONTH(EL.data)";
+
+    $query = $this->conn->prepare($sql);
+    $query->execute();
+    if($query->rowCount() != 0 ){
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        $temp_id = $result["ID"];
+        return $temp_id;
+    }else{
+        return null;
+    }
+
+    }
+
+
+    function get_File_ID($path){
+        $query = "SELECT ID FROM tabelfiles WHERE perFi = '$path' ";
+        $query = $this->conn->prepare($query);
+        $query->execute();
+        if($query->rowCount() != 0 ){
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+            $temp_id = $result["ID"];
+            return $temp_id;
+        }else{
+            return null;
+        }
+
+        
+    }
+
 
    
     function close_db(){

@@ -29,7 +29,7 @@ if(isset($_SESSION["user_id"]) && isset($_SESSION["nickname"] ) ){
     <link rel="icon" href="../media/Logo/Logo_small.png">
     <title>PhotoR</title>
 </head>
-<body>
+<body id="dropzone">
     
     <nav class="navbar">
         <div class="navbar-brand" >
@@ -45,14 +45,14 @@ if(isset($_SESSION["user_id"]) && isset($_SESSION["nickname"] ) ){
             </div>
         </div>
         <div class="menu"  >
-            <h2>{Name} <br> <span>Bevenuto!</span></h2>
+            <h2><?php   echo $_SESSION["nickname"]; ?> <br> <span>Bevenuto!</span></h2>
             <ul>
                 <li>
                     <i class="fa fa-user" aria-hidden="true"><a href="/PhotoR/Website/view/profile.php">Profile</a></i>
                     
                 </li>
                 <li>
-                    <i class="fa fa-cog" aria-hidden="true"><a href="#">Settings</a></i> 
+                    <i class="fa fa-cog" aria-hidden="true"><a href="#">Settings_WIP</a></i> 
                 </li>
                 <li>
                     <i class="fas fa-sign-out-alt" aria-hidden="true"><a href="/PhotoR/Website/php/logout.php">LogOut</a></i> 
@@ -65,7 +65,7 @@ if(isset($_SESSION["user_id"]) && isset($_SESSION["nickname"] ) ){
         
         
         
-        <script src="https://cdn.jsdelivr.net/gh/silvia-odwyer/pixels.js/dist/Pixels.js"></script>
+        
     </nav>
     <div class="work_area">
         <div class="menu_lateral">
@@ -79,68 +79,91 @@ if(isset($_SESSION["user_id"]) && isset($_SESSION["nickname"] ) ){
 
                 <!--card filtri-->
                 <div class="container_card">
-                    <div class="image_card">
-                    </div>
-                    <div class="Descr_card">
-                        gaussinano
+                    <div  class="Descr_card" value="gaussiano">
+                        Gaussiano
                     </div>
                 </div>
-
                 <div class="container_card">
-                    <div class="image_card">
-                    </div>
-                    <div class="Descr_card">
-                        smoothing
+                    <div  class="Descr_card" value="hue">
+                        Hue
                     </div>
                 </div>
-
                 <div class="container_card">
-                    <div class="image_card">
-                    </div>
-                    <div class="Descr_card">
-                        B&N
+                    <div  class="Descr_card" value="sepia">
+                        Sepia
                     </div>
                 </div>
-
                 <div class="container_card">
-                    <div class="image_card">
-                    </div>
-                    <div class="Descr_card">
+                    <div class="Descr_card" value="B&N">
                         B&N
                     </div>
                 </div>
                 <div class="container_card">
-                    <div class="image_card">
-                    </div>
-                    <div class="Descr_card">
-                        B&N
+                    <div class="Descr_card" value="Vintage">
+                        Vintage
                     </div>
                 </div>
+                <div class="container_card">
+                    <div class="Descr_card" value="sharpen">
+                        Sharpen
+                    </div>
+                </div>
+                <div class="container_card">
+                    <div class="Descr_card" value="detectEdges">
+                        DetectEdges
+                    </div>
+                </div>
+                <div class="container_card">
+                    <div class="Descr_card" value="saturation">
+                        Saturation
+                    </div>
+                </div>
+
+
+
                 <!--card filtro fine-->
                 
             </div>
 
         </div>
 
-
+   
 
         <div class="tool_layer_container">
-            <canvas id="canvas_image"  width="300" height="300">
+            <canvas id="canvas"  width="300" height="300">
             
             </canvas>
             <div class="tool-canvas">
                 <div class="button_tool-canvas">
-                    <button ><i style="font-size: 28px;" class="fas fa-undo fa-2x"></i></button>
-                    <button ><i class="far fa-images fa-2x"></i></button>
-                    <button id="download-btn"><i class="fas fa-download fa-2x"></i></button>
+
+                    <button  id="reverse-btn" >
+                        <i id="reset" style="font-size: 28px;"  class="fas fa-eraser fa-2x"  value="reset"></i>
+                    </button>
+
+                    <button >
+                        <i class="far fa-images fa-2x" onclick="Send_File()" ></i>
+                        <input onchange="Read_File(this)"  type="file" id="file-upload"  accept="image/*" style="display: none;">
+                    </button>
+                    
+                    <button id="download"  id="download-btn">
+                        <i class="fas fa-download fa-2x"></i>
+                    </button>
+                    
                     
                 </div>
             
 
             </div>
         </div>
+        
+        
     </div>
-    <script src="../js/drag_script.js"></script>
-    <script src="../js/script_editor.js"></script>
+    <script type="text/javascript" src="../js/webgli_filter.js"></script>
+    <script type="text/javascript" src="../js/drag_script.js"></script>
+    <script type="text/javascript" src="../js/script_editor.js"></script>
+    
+
+
+
 </body>
 </html>

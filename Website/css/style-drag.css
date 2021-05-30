@@ -209,6 +209,7 @@ body {
 }
 
 .menu.active{
+    overflow: hidden;
     visibility:initial;
     opacity: 1;
 }

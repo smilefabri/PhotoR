@@ -37,7 +37,7 @@ let upload = function(files){
 
 			console.log("send data: ", formData)
 			xhr.send(formData);
-
+			
 			
 
 			xhr.onload = function(){
@@ -69,6 +69,7 @@ function ToggleMenu(){
 }
 
 function Send_File(){
+	
 	let Input_File = document.getElementById("file-upload");
 	Input_File.click();
 
@@ -97,25 +98,16 @@ window.addEventListener('load',function(){
 	
 	console.log("Debug: upload event");
 
-	let Dropzone = document.getElementById("dropzone")
+	let Drop = document.getElementById("dropzone");
 
-	Dropzone.ondrop = function(e){
+
+	Drop.ondrop = function(e){
 		
 		e.preventDefault();
 		files = e.dataTransfer.files;
 		console.log(files);
 		upload(files);
 		//upload(e)
-		return false;
-	}
-
-	Dropzone.ondragover = function(){
-		return false;
-
-	}
-
-	Dropzone.ondragleave = function(){
-
 		return false;
 	}
 
