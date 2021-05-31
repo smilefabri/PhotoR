@@ -44,7 +44,7 @@
             $temp_ID_type = $database->filtroID_by_name($type_filtro);
             
             if($temp_ID_type != null){
-                if($database->N_elab($temp_id) >= $max_elaborazioni){
+                if($database->N_elab($temp_id) >= $database->get_max($temp_id)){
 
     
                     $uploaded[] = array(

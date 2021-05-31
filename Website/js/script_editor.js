@@ -68,8 +68,10 @@ window.addEventListener('load',function(){
 
     var reset_btn = this.document.getElementById("reset");
     reset_btn.addEventListener('click',()=>{
+
         LoadImageCanvas(file_image);
         type_Filter = null;
+
     });
 
     //TODO filter
@@ -212,7 +214,7 @@ window.addEventListener('load',function(){
                         data =JSON.parse(data)
                         console.log("risposta dal server php:",data)
                         if (data[0]["response"] == "200") {
-                            window.location.replace(data[0]['header'].replace("#","%23"));
+                            //window.location.replace(data[0]['header'].replace("#","%23"));
                             alert(data[0]['descr'])
                             
                             
@@ -251,7 +253,7 @@ window.addEventListener('load',function(){
 
 
         }else{
-
+            this.alert("devi applicare almeno un filtro");
             console.log("Debug: non hai elaborato l'immagine");
 
         }

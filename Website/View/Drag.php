@@ -59,13 +59,10 @@ if(isset($_SESSION["user_id"]) && isset($_SESSION["nickname"] ) ){
             </ul>
         </div>
         
-    
-
-        
-    
-
 
     </nav>
+
+    
       
     <div  id='dropzone' draggable="true" class="container drag-container">
         <div class="container__content">

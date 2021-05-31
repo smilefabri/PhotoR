@@ -108,6 +108,15 @@ class Manager_DB{
         $query->execute();
     }
 
+    function get_max($id){
+        $query = "SELECT MaxElab FROM utenti WHERE ID = '$id'";
+        $query = $this->conn->prepare($query);
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        $temp_Max = $result["MaxElab"];
+        return $temp_Max;
+    }
+
     function Add_file($UserID,$nameFiles,$SizeFiles,$pathfiles){
         $UserID = intval($UserID);
         $query = "INSERT INTO tabelfiles(utenteID,nomeFi,dimFi,perFi) VALUES ('$UserID','$nameFiles','$SizeFiles','$pathfiles' )";
@@ -158,6 +167,10 @@ class Manager_DB{
 
     }
 
+    function Elab_rimasti($temp_id){
+        return $this->get_max($temp_id)- $this->N_elab($temp_id);
+    }
+
 
     function get_File_ID($path){
         $query = "SELECT ID FROM tabelfiles WHERE perFi = '$path' ";
@@ -180,19 +193,27 @@ class Manager_DB{
 
     . "FROM connessioni CON,utenti UT\n"
 
-    . "WHERE UT.ID = CON.UserID AND UT.ID='$id'";
+    . "WHERE UT.ID = CON.UserID AND CON.UserID='$id'";
     $query = $this->conn->prepare($sql);
     $query->execute();
-    if($query->rowCount() != 0 ){
-        $result = $query->fetch(PDO::FETCH_ASSOC);
-        $temp_id = $result;
-        return $temp_id;
-    }else{
-        return null;
+    
+
+
+    if($query->rowCount()>0){
+        echo "<thead><tr><th class= \"text-left\">Name</th><th class= \"text-left\" >LastName</th><th class= \"text-left\">StartConn</th><th class= \"text-left\">EndConn</th></tr><thead>";
+        while($row = $query->fetch(PDO::FETCH_ASSOC)){
+            echo "<tr><td>".$row["name"]."</td><td class= \"text-left\">".$row["lastname"]."</td><td class= \"text-left\">".$row["startConn"]."</td><td class= \"text-left\">".$row["endConn"]."</td></tr>";
+
+        }
+
     }
+  
+
+
 
 
     }
+
 
 
    

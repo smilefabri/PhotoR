@@ -1,7 +1,206 @@
+
+
+
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap");
+
+
+
+* {
+	margin: 0;
+	padding: 0;
+	border: none;
+	box-sizing: border-box;
+}
+
+body {
+	height: 100vh;
+
+	align-items: center;
+	justify-content: center;
+	background: #d2d3d3;
+    color: #505050;
+    position: relative;
+    font-family: "Roboto Mono", monospace;
+    font-size: 20px;
+}
+
+
+
+/*navbar*/
+
+
+.navbar{
+    
+    overflow:inherit;
+    position: relative;
+    background-color: white;
+    width: 100%;
+    height: 7%;
+    box-shadow: 0 9px 28px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.10);
+
+}
+
+.navbar-brand{
+    
+    text-align: center;
+    float: left;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 20px;
+    
+}
+
+#title-logo{
+    position: absolute;
+    margin-top: 18%;
+    font-weight:bolder;
+    margin-left: 40%;
+    display: inline-block;
+    color: #ff0a54;
+    font-family: "Roboto Mono", monospace;
+}
+
+.box_user{
+    height: 100%;
+    width: 50px;
+    float: right;
+    margin-right: 80px;
+    position: relative;
+    /*background-color: red;*/
+}
+
+.user_img{
+    height: 100%;
+    width: 100%;
+    position:relative;
+    top: 50%;
+    left: 50%;
+    margin: -21px 0 0 -20px; 
+}
+
+.user_img:hover{
+  cursor: pointer;
+}
+
+.menu{
+    z-index: 2;
+    float:right;
+    position: relative;
+    top: 70px;
+    left: 72px;
+    font-family: "Roboto Mono", monospace;
+    background-color: white;
+    width:200px;
+    padding: 10px 30px;
+    padding-bottom: 30px;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 7px;
+    transition: 0.5s;
+    visibility: hidden;
+    opacity: 0;
+    
+}
+
+.profile img{
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.menu h2::before{
+    
+    content: "";
+    position:absolute;
+    top:-5px;
+    right: 28px;
+    width: 28px;
+    height: 20px;
+    background-color: #fff;
+    transform: rotate(45deg);
+
+    z-index: 1;
+}
+
+.menu h2 {
+    width: 100%;
+    padding: 10px 0;
+    text-align: left;
+    font-size: 25px;
+    font-weight: 600;
+    color: #555;
+    line-height: 1.2em;
+    justify-content: left;
+}
+
+
+.menu span{
+    font-size: 15px;
+    font-weight: 400;
+    color: #cecece;
+}
+
+.menu.active{
+    visibility:initial;
+    opacity: 1;
+}
+
+
+.menu ul li{
+    list-style: none;
+    padding: 10px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+
+}
+
+.menu ul li a{
+    text-decoration: none;
+    color: #555;
+    font-family: "Roboto Mono", monospace;
+    font-size: 15px;
+    margin-left: 40px;
+}
+
+.menu ul li a:hover{
+    text-decoration: none;
+    color: #ff0a54;
+}
+
+
+.menu ul li .fa{
+    font-size: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
 
 body {
-  background-color: #3e94ec;
+  background-color: #d2d3d3;
   font-family: "Roboto", helvetica, arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -40,11 +239,14 @@ div.table-title {
   width: 100%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   animation: float 5s infinite;
+  float: left;
+  position: relative;
+  left: 20px;
 }
  
 th {
   color:#D5DDE5;;
-  background:#1b1e24;
+  background:#8d99a0;
   border-bottom:4px solid #9ea7af;
   border-right: 1px solid #343a45;
   font-size:23px;
@@ -74,7 +276,7 @@ tr {
 }
  
 tr:hover td {
-  background:#4E5066;
+  background:#ff0a54;
   color:#FFFFFF;
   border-top: 1px solid #22262e;
 }
@@ -92,7 +294,7 @@ tr:nth-child(odd) td {
 }
  
 tr:nth-child(odd):hover td {
-  background:#4E5066;
+  background:#ff0a54;
 }
 
 tr:last-child td:first-child {
@@ -141,107 +343,3 @@ td.text-center {
 td.text-right {
   text-align: right;
 }
-
-
-  
-  .clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  .nav-activity {
-    display: block;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    width: auto;
-    max-width: 90px;
-    height: auto;
-    padding-right: 0;
-    padding-left: 0;
-    overflow: hidden;
-    cursor: pointer;
-    transition: 200ms ease-out;
-    border-top: none;
-  }
-  .nav-activity:hover {
-    max-width: 250px;
-    cursor: pointer;
-  }
-  .nav-activity svg {
-    float: left;
-    margin: 10px 20px 10px 10px;
-  }
-  .nav-activity a .activity-title {
-    display: block;
-    margin-top: 15px;
-    font-weight: 600;
-    color: #ffffff;
-  }
-  .nav-activity a .activity-listings {
-    display: block;
-    max-width: 100%;
-    overflow: hidden;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    color: rgba(255, 255, 255, 0.8);
-  }
-  .nav-activity .icon-wrap {
-    position: relative;
-    float: left;
-  }
-  .nav-activity svg {
-    display: block;
-    width: 50px;
-    height: 50px;
-    margin: 0 auto;
-    margin: 10px;
-    margin-right: 20px;
-  }
-  .nav-activity svg circle {
-    fill: none;
-  }
-  .nav-activity .activity-link, .nav-activity a.activity-link {
-    display: block;
-    min-width: 200px;
-    padding: 5px 10px;
-    font-size: 0.9em;
-    white-space: nowrap;
-    border-top: none;
-    background-color: #212429;
-    border-color: #212429;
-  }
-  .nav-activity .activity-link.active, .nav-activity a.activity-link.active {
-    background-color: #2077D8;
-    border-color: #2077D8;
-  }
-  .nav-activity .activity-link.active .activity-listings, .nav-activity a.activity-link.active .activity-listings {
-    color: white;
-  }
-  .nav-activity .activity-link.active .svg-fill, .nav-activity .activity-link.active svg circle, .nav-activity a.activity-link.active .svg-fill, .nav-activity a.activity-link.active svg circle {
-    fill: #1875DC;
-  }
-  .nav-activity .activity-link.active .activity-title, .nav-activity a.activity-link.active .activity-title {
-    color: #ffffff;
-  }
-  .nav-activity .activity-link.active:hover .svg-fill, .nav-activity a.activity-link.active:hover .svg-fill {
-    fill: #549cec;
-  }
-  .nav-activity .activity-link:hover, .nav-activity a.activity-link:hover {
-    border-color: #2077D8;
-    background-color: #3184e0;
-  }
-  .nav-activity .activity-link .svg-fill, .nav-activity .activity-link .svg-fill *, .nav-activity .activity-link .svg-icon, .nav-activity .activity-link .svg-icon *, .nav-activity a.activity-link .svg-fill, .nav-activity a.activity-link .svg-fill *, .nav-activity a.activity-link .svg-icon, .nav-activity a.activity-link .svg-icon * {
-    transition: fill 0.2s;
-  }
-  .nav-activity .activity-link .svg-fill, .nav-activity .activity-link .svg-fill *, .nav-activity a.activity-link .svg-fill, .nav-activity a.activity-link .svg-fill * {
-    fill: #0E5099;
-    fill: #F3DF32;
-  }
-  
-  .nav-activity .svg-icon, .nav-activity .svg-icon * {
-    fill: #fff;
-  }
