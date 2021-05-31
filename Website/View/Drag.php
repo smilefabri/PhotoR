@@ -50,7 +50,7 @@ if(isset($_SESSION["user_id"]) && isset($_SESSION["nickname"] ) ){
                     
                 </li>
                 <li>
-                    <i class="fa fa-cog" aria-hidden="true"><a href="#">Settings_WIP</a></i> 
+                    <i class="fa fa-cog" aria-hidden="true"><a href="/PhotoR/Website/View/Query.php">Query</a></i> 
                 </li>
                 <li>
                     <i class="fas fa-sign-out-alt" aria-hidden="true"><a href="/PhotoR/Website/php/logout.php">Logout</a></i> 

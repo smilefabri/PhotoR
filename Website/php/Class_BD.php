@@ -214,9 +214,142 @@ class Manager_DB{
 
     }
 
+    function isa_convert_bytes_to_specified($bytes, $to, $decimal_places = 1) {
+        $formulas = array(
+            'K' => number_format($bytes / 1024, $decimal_places),
+            'M' => number_format($bytes / 1048576, $decimal_places),
+            'G' => number_format($bytes / 1073741824, $decimal_places)
+        );
+        return isset($formulas[$to]) ? $formulas[$to] : 0;
+      }
+
+      
+
+    function get_MB($id){
+        $sql = "SELECT sum(dimFi) as MB\n"
+
+    . "FROM elaborazioni EL,tabelfiles TF, filtri F , utenti U\n"
+
+    . "WHERE EL.FileID = TF.ID AND F.ID = EL.FiltroID AND U.ID = TF.UtenteID AND UtenteID ='$id' AND DAY(NOW()) =DAY(EL.data) \n"
+
+    . "AND YEAR(NOW()) = YEAR(EL.data) AND MONTH(NOW()) = MONTH(EL.data)";
+    $query = $this->conn->prepare($sql);
+    $query->execute();
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+    $temp_id = $result["MB"];
+
+    return $this->isa_convert_bytes_to_specified($temp_id,'M');
+
+    }
+
+    function Best_filtro(){
+        $sql = "SELECT type, COUNT(*)AS n\n"
+
+    . "FROM elaborazioni, filtri\n"
+
+    . "WHERE elaborazioni.FiltroID = filtri.ID\n"
+
+    . "GROUP BY filtri.Type limit 1 \n";
+
+    $query = $this->conn->prepare($sql);
+    $query->execute();
+    if($query->rowCount()>0){
+        echo "<thead><tr><th class= \"text-left\">type</th><th class= \"text-left\" >N-volte</th></tr><thead>";
+        while($row = $query->fetch(PDO::FETCH_ASSOC)){
+            echo "<tr><td>".$row["type"]."</td><td class= \"text-left\">".$row["n"]."</td></tr>";
+
+        }
+
+    }
+  
 
 
-   
+    }
+
+    function utenti_senza_elab(){
+        $sql = "SELECT name,lastname ,utenti.email\n"
+
+    . "FROM utenti\n"
+
+    . "WHERE email NOT IN (\n"
+
+    . "    SELECT email\n"
+
+    . "    FROM elaborazioni EL,tabelfiles TF, filtri F , utenti U\n"
+
+    . "    WHERE EL.FileID = TF.ID AND F.ID = EL.FiltroID AND U.ID = TF.UtenteID  \n"
+
+    . ")";
+    $query = $this->conn->prepare($sql);
+    $query->execute();
+    if($query->rowCount()>0){
+        echo "<thead><tr><th class= \"text-left\">nome</th><th class= \"text-left\">cognome</th><th class= \"text-left\" >Nemail</th></tr><thead>";
+        while($row = $query->fetch(PDO::FETCH_ASSOC)){
+            echo "<tr><td class= \"text-left\" >".$row["name"]."</td><td class= \"text-left\" >".$row["lastname"]."</td><td class= \"text-left\">".$row["email"]."</td></tr>";
+
+        }
+
+    }
+  
+
+
+
+
+    }
+
+    function get_past_month_access(){
+        $sql = "SELECT COUNT(*)AS N_conn\n"
+
+        . "FROM connessioni\n"
+    
+        . "WHERE\n"
+    
+        . "YEAR(startConn) = YEAR(CURDATE() - INTERVAL 1 MONTH)\n"
+    
+        . "AND MONTH(startConn) = MONTH(CURDATE() - INTERVAL 1 MONTH)";
+        $query = $this->conn->prepare($sql);
+        $query->execute();
+
+        if($query->rowCount()>0){
+            echo "<thead><tr><th class= \"text-left\" >Numero accessi</th></tr><thead>";
+            while($row = $query->fetch(PDO::FETCH_ASSOC)){
+                echo "<tr><td class= \"text-left\" >".$row["N_conn"]."</td></tr>";
+    
+            }
+    
+        }
+
+
+
+
+
+    }
+
+    function get_past_month_elab(){
+        $sql = "SELECT COUNT(*)AS N_elab\n"
+
+        . "FROM elaborazioni\n"
+    
+        . "WHERE\n"
+    
+        . "YEAR(data) = YEAR(CURDATE() - INTERVAL 1 MONTH)\n"
+    
+        . "AND MONTH(Data) = MONTH(CURDATE() - INTERVAL 1 MONTH)";
+    $query = $this->conn->prepare($sql);
+    $query->execute();
+
+    if($query->rowCount()>0){
+        echo "<thead><tr><th class= \"text-left\" >Numero Elaborazioni</th></tr><thead>";
+        while($row = $query->fetch(PDO::FETCH_ASSOC)){
+            echo "<tr><td class= \"text-left\" >".$row["N_elab"]."</td></tr>";
+
+        }
+
+    }
+    
+
+    }
+
     function close_db(){
         $this->conn = null;
     }

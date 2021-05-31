@@ -327,3 +327,18 @@ button{
           transform:translate3d(0, 0, 0);
 }
 
+
+.container_card{
+  height: 60px;
+  width: 100%;
+  background-color:#e6e6e6;
+  margin-top: 15px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+
+}
+
+.container_card:hover{
+box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.363);
+cursor:pointer
+}

@@ -67,7 +67,7 @@
                         'name'=> $rename,
                         'header'=> $path.$rename ,
                         'max'=> $database->N_elab($temp_id),
-                        'descr'=> "Download avviato!",
+                        'descr'=> "Download avviato! WIP",
                     );
 
 

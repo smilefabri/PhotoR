@@ -1,4 +1,3 @@
-
 <?php
 require_once('../php/Class_BD.php');
   
@@ -67,7 +66,7 @@ if(isset($_SESSION["user_id"]) && isset($_SESSION["nickname"] ) ){
                 </li>
                 <?php
                     $var= "<li> \n"
-                    ."<i class=\"fas fa-edit\" aria-hidden= \"true\"><a href=\"/PhotoR/Website/View/Drag.php\">Editor</a></i> \n"
+                    ."<i class=\"fa fa-cog\" aria-hidden= \"true\"><a href=\"/PhotoR/Website/View/Drag.php\">Editor</a></i> \n"
                     ."</li>";
 
 
@@ -80,7 +79,7 @@ if(isset($_SESSION["user_id"]) && isset($_SESSION["nickname"] ) ){
                 
                 ?>
                 <li>
-                    <i class="fa fa-cog" aria-hidden="true"><a href="/PhotoR/Website/View/Query.php">Query</a></i> 
+                    <i class="fa fa-cog" aria-hidden="true"><a href="#">Query</a></i> 
                 </li>
                 <li>
                     <i class="fas fa-sign-out-alt" aria-hidden="true"><a href="/PhotoR/Website/php/logout.php">Logout</a></i> 
@@ -97,25 +96,52 @@ if(isset($_SESSION["user_id"]) && isset($_SESSION["nickname"] ) ){
 
 
 
-<div class="cont">
+<div class="cont" style="display: inline-block;">
+<div class="container_card" style="display:flex">
+          <div  class="Descr_card" value="gaussiano">
+                <p style="color:#ff0a54">Query 1: per il Mese passato, accessi ed elaborazioni</p>
+          </div>
+  </div>
+
+    <table class="table-fill">
+    
+    <?php
+      //printo la tabella delle connessioni
+      $database->get_past_month_access();
+      $database->get_past_month_elab();
+    ?>
+  </table>
+
+
+
 <div class="container_card">
           <div  class="Descr_card" value="gaussiano">
-                        elaborazioni ancora disponibili: <?php  echo $database->Elab_rimasti($user_id) ?>
+                <p style="color:#ff0a54">Query 2: il miglior filtro</p>
           </div>
   </div>
-  <div class="container_card">
-          <div  class="Descr_card" value="gaussiano">
-                        Megabyte elaborati: <?php  echo $database->get_MB($user_id) ?>Mb
-          </div>
-  </div>
-  
+
   <table class="table-fill">
     
     <?php
       //printo la tabella delle connessioni
-      $database->All_conn($user_id);
+      $database->Best_filtro();
     ?>
   </table>
+
+  <div class="container_card" style="display:flex">
+          <div  class="Descr_card" value="gaussiano">
+                <p style="color:#ff0a54">Query 3: utenti senza elaborazioni</p>
+          </div>
+  </div>
+
+    <table class="table-fill">
+    
+    <?php
+      //printo la tabella delle connessioni
+      $database->utenti_senza_elab();
+    ?>
+  </table>
+  </div>
 </div>
 
 
