@@ -46,7 +46,7 @@ if(isset($_SESSION["user_id"]) && isset($_SESSION["nickname"] ) ){
             <h2><?php   echo $_SESSION["nickname"]; ?> <br> <span>Bevenuto!</span></h2>
             <ul>
                 <li>
-                    <i class="fa fa-user" aria-hidden="true"><a href="/PhotoR/Website/view/profile.php">Profile</a></i>
+                    <i class="fa fa-user" aria-hidden="true"><a href="/PhotoR/Website/View/profile.php">Profile</a></i>
                     
                 </li>
                 <li>

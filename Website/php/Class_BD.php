@@ -175,6 +175,26 @@ class Manager_DB{
     }
 
 
+    function All_conn($id){
+        $sql = "SELECT UT.name, UT.lastname,startConn,endConn \n"
+
+    . "FROM connessioni CON,utenti UT\n"
+
+    . "WHERE UT.ID = CON.UserID AND UT.ID='$id'";
+    $query = $this->conn->prepare($sql);
+    $query->execute();
+    if($query->rowCount() != 0 ){
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        $temp_id = $result;
+        return $temp_id;
+    }else{
+        return null;
+    }
+
+
+    }
+
+
    
     function close_db(){
         $this->conn = null;
