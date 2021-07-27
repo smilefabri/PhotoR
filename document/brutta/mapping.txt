@@ -1,0 +1,5 @@
+    utenti(id,name,lastname,birthday,email,nickname,password)
+    connessioni(id,UserID,startConn,endConn)
+    Filtro(id,filtertype)
+    file(id,UserID,NameFiles,SizeFiles,PathFiles)
+    elaborti(filesID,elabID,data)
