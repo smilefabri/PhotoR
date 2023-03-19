@@ -10,6 +10,6 @@ Per elaborare le immagini uso  Webgl opportunamente modificato per adattarsi al 
 
 ## EDITOR:
 ![image](https://user-images.githubusercontent.com/32204647/226210133-c1bdacfa-ee51-4def-9b0e-69a94d986c6f.png)
-## LOGIN && SIGN IN:
+## LOGIN && SIGN UP:
 ![image](https://user-images.githubusercontent.com/32204647/226210486-ffbb5ed5-e96a-4571-968a-0118eb7f6def.png)
 
